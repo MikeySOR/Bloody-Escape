@@ -1,15 +1,20 @@
 #------------------------------------------------------------------Intro
 
 
-print("=" *30)
-print("|| Welcome to""\033[91m Bloody Escape \033[0m" "||")
-print("=" *30)
-print("Press the numbers")
+
+
+#------------------------------------------------------------------Imports
+
+import random
 
 #------------------------------------------------------------------Menu
 
 def menu():
     while True:
+        print("=" *30)
+        print("|| Welcome to""\033[91m Bloody Escape \033[0m" "||")
+        print("=" *30)
+        print("\nPress the numbers")
         print("1. Play")
         print("2. Credits")
         print("3. Socials")
@@ -38,6 +43,7 @@ def menu():
                 continue
             
             if level == 0:
+                print("\n")
                 print("☮" *20)
                 print("\n-The game has ended-")
                 print("You have no sins.\n")
@@ -67,6 +73,7 @@ def menu():
             print("=" *28)
         
         elif vraag == 4:
+            print("\n")
             print("☮" *20)
             print("\n-The game has ended-\n")
             print("☮" *20)
@@ -364,7 +371,7 @@ You barely sit down before the TV suddenly flicks on by itself.""")
     | .--------------. |
     | |--.__.--.__.--| |
     | |--.__.--.__.--| |
-    | |--.👁_.--👁.--| |
+    | |--.👁_.--👁.-- | |
     | |--.__.--.__.--| |
     | |--.__.--.__.--| |
     | '--------------'o|
@@ -373,8 +380,11 @@ You barely sit down before the TV suddenly flicks on by itself.""")
 
 """)
            print("=" *133)
-           print(f""" Hello {name} i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
-You left innocent people—my wife—behind. She was only 45."  A light snaps on across the room. Your best friend is there, someone standing behind him.
+           print(f"""Hello {name} i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
+You left innocent people—my wife—behind. She was only 45."
+
+The room floods with light.
+As you narrow your eyes at the mirror, your best friend comes into focus—along with the shadow of someone standing just behind him.
 
 “I’m giving you a second chance. This time you don’t get to run. Put your hands in the iron lock.”
 
@@ -398,7 +408,134 @@ Panic surges through you. You obey.
     
 #------------------------------------------------------------------PART 3: THE GAME
 def the_game(name, level):
-    print("SOOOOOONNNNN")
+    riddles = [
+        ("What gets smaller every time it takes a bath?", "soap"),
+        ("What is more useful when it is broken?", "egg"),
+        ("What date could be seen on the calender?", "25 September 2009"),
+        ("What was written on the back of the picture and no not your name something else?", "betrayal"),
+        ("I am strong enough to smash ships, but I fear the Sun. What am I?", "ice"),
+        ("I watch you sleep, I haunt you by day. You stare at me and saw nothing, but darkness. What am I?", "fear"),
+        ("What is a cereal's worst fear?", "a cereal killer"),
+        ("What do you call a person who is afraid of Santa Claus?", "claustrophobic"),
+        ("What does man love more than life, fear more than death or mortal strife, What the poor have, the rich require, and what contented men desire, What the miser spends and the spendthrift saves And all men carry to their graves?", "nothing"),
+        ("It can't be seen, can't be felt, can't be heard, and can't be smelt. It lies behind stars and under hills, And empty holes it fills. It comes first and follows after, Ends life, and kills laughter. What is it?", "the dark"),
+        ("There is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. He has a wife and 2 kids. What does he weigh?", "meat"),
+        ("Something that requires our mental skill to decode it, our imagination to understand it, our knowledge is tested to its max, it confuses us at every stage, it seems easy yet difficult, only those who are used to, will get through. What is it?", "a riddle"),
+        ("What kills you inside the more you keep it and sets you free the moment you release it?", "guilt"),
+        ("Why did the man shoot the clock?", "killing time"),
+        ("Why was the clock arrested?", "killing time"),
+        ("A color is seen on a stoplight, an item you use to eliminate the darkness. What comic book character is it?", "green lantern"),
+        ("If seven cats kill seven rats in 7 minutes, how many would be needed to kill one hundred rats in 50 minutes?", "14"),
+        ("Who was the most famous Skeleton detective?", "sherlock bones"),
+        ("What is a ghost's favorite dessert?", "ice scream"),
+        ]
+    
+    lives = level
+    score = 0
+    
+    vragenlijst = random.sample(riddles, level)
+    
+    for i, (riddle, answer) in enumerate(vragenlijst, start=1):
+        print("☠" * 9)
+        print(f"Riddle {i} / {level}")
+        print("☠" * 73)
+        print("\n")
+        print(riddle)
+        print("\n")
+        print("☠" * 73)
+                
+        user_answer = input("Give answer:").strip().lower()
+        correct = answer.lower()
+        if user_answer == correct:
+            print("Correct.\n")
+            score += 1
+            
+        else:
+            print(f"WRONG! The answer was: {answer}\n")
+            print("A finger has been cut, a sharp burst of pain tears through you, and you scream, “LET ME OUT!”\n")
+            lives -= 1
+            
+            if lives <= 0:
+                print("=" *103)
+                print("NOT EVEN ONE, WHAT A SHAME")
+                print("you will have to live with the consequences")
+                print("Enter the next room. And be smart about it. Your friend’s life hangs on how you choose your next steps")
+                print("=" *103)
+                ending(name, level, score)
+                return
+            
+    
+    print("\n" + "=" * 103)
+    print("You may have gotten lucky this time, but this isn’t the end.")
+    print("Enter the next room. And be smart about it. Your friend’s life hangs on how you choose your next steps")
+    print("=" *103)
+    ending(name, level, score)
+                
+                
+#------------------------------------------------------------------Einding
+def ending(name, level, score):
+    while True:
+        print("1. Try to run")
+        print("2. Enter the next room")
+        try:
+            vraag = int(input("Make a choice:"))
+        
+        except ValueError:
+            print("\n")
+            print("X" *30)
+            print("WRONG CHOICE")
+            print("X" *30)
+            continue
+            
+        if vraag == 1:
+            print("\n")
+            print("=" * 133, """\nYou hold your breath, waiting for the right moment. The room is tight with tension.
+You spin toward the door, reaching for the handle—
+
+A sudden crack explodes through the air. Glass rains down around you. A sharp impact steals your breath, and the world tilts as your knees hit the floor.
+
+“Wrong choice.”
+
+Another echoing shot splits the silence.
+
+“I expected more from you.”""")
+            print("=" * 133)
+            print(f"{name}.")
+            print(f"You solved {score}/{level} riddles.")
+            print("=" * 30)
+            print("1. Back to menu")
+            
+            press = int(input("Press the number:"))
+            print("\n")
+            
+            if press == 1:
+                menu()
+                return
+            
+            
+        
+        
+        elif vraag == 2:
+            print("\n")
+            print("=" * 68)
+            print(f"Congratulations {name} you’ve completed the first part of the game!")
+            print(f"You solved {score}/{level} riddles.")
+            print("=" * 68)
+            print("1. Back to menu")
+            
+            press = int(input("Press the number:"))
+            print("\n")
+            
+            if press == 1:
+                menu()
+                return
+        
+        else:
+            print("\n")
+            print("X" *30)
+            print("WRONG CHOICE")
+            print("X" *30)
+    
     
     
 #------------------------------------------------------------------Opstart
