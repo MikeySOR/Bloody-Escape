@@ -4,12 +4,12 @@
 print("=" *30)
 print("|| Welcome to""\033[91m Bloody Escape \033[0m" "||")
 print("=" *30)
+print("Press the numbers")
 
 #------------------------------------------------------------------Menu
 
 def menu():
     while True:
-        print("\nPress the number")
         print("1. Play")
         print("2. Credits")
         print("3. Socials")
@@ -17,7 +17,6 @@ def menu():
         
         try:
             vraag = int(input("Make your choise:"))
-            print("\n")
         except ValueError:
             print("X" *30)
             print("WRONG CHOICE!")
@@ -28,9 +27,11 @@ def menu():
             name = input("What is your name?:")
             
             try:
-                level = int(input("From 0 to 10?:"))
+                level = int(input("How many riddles from 0 to 10?:"))
+                print("\n")
             
             except ValueError:
+                print("\n")
                 print("X" *30)
                 print("ENTER A NUMBER")
                 print("X" *30)
@@ -43,17 +44,20 @@ def menu():
                 print("☮" *20)
                 break
             
-            play(name)
-            break
+            else:
+                play(name, level)
+                break
                     
                     
         elif vraag == 2:
+            print("\n")
             print("-Credits-")
             print("=" *28)
             print("-Mikey Sorgeloos-")
             print("=" *28)
             
         elif vraag == 3:
+            print("\n")
             print("-Socials-")
             print("=" *28)
             print("|FB: Mikey Sorgeloos       |")
@@ -64,29 +68,31 @@ def menu():
         
         elif vraag == 4:
             print("☮" *20)
-            print("\n-The game has ended-")
-            print("You have no sins.\n")
+            print("\n-The game has ended-\n")
             print("☮" *20)
             break
         
         else:
+            print("\n")
             print("X" *30)
             print("WRONG CHOICE!")
             print("X" *30)
         
 #------------------------------------------------------------------PART 1: OUTSIDE
             
-def play(name):
-    print("""Help…
+def play(name, level):
+    print("=" *133,"""\nHelp…
 Help… HEEEELP AAAAUWHHWHHHHEEEERRRRRGGGG!
 
-You jolt awake, lying on the cold ground. Your head throbs as you push yourself upright. All around you stretches a dark forest—endless, silent. Too silent. No animals. No wind. Nothing. The air feels wrong, like the world is holding its breath.
+You jolt awake, lying on the cold ground. Your head throbs as you push yourself upright. All around you stretches a dark forest—endless,
+silent. Too silent. No animals. No wind. Nothing. The air feels wrong, like the world is holding its breath.
 
 Then—
 A light.
 Faint at first, growing stronger.
 
-You step toward it, cautious but desperate for anything familiar. It’s a lantern. Old. Rusted. Flickering with a weak orange glow. You pick it up, and as you do, you notice a note beneath it.
+You step toward it, cautious but desperate for anything familiar. It’s a lantern. Old. Rusted. Flickering with a weak orange glow.
+You pick it up, and as you do, you notice a note beneath it.
 
 “I KNOW WHAT YOU ARE.”
 
@@ -94,7 +100,8 @@ Your heart stops. Panic claws at your throat, but you force yourself to breathe.
 
 You start walking, lantern trembling in your hand. The forest swallows the path until finally… a shape emerges in the darkness.
 
-A cabin. Abandoned, decayed, leaning to one side like it could collapse with a sigh. A heavy padlock keeps the door shut. And on that door, smeared in dark, tacky red:
+A cabin. Abandoned, decayed, leaning to one side like it could collapse with a sigh. A heavy padlock keeps the door shut.
+And on that door, smeared in dark, tacky red:
 
 FIND THE CODE
 
@@ -105,29 +112,29 @@ Your stomach twists. Your pulse spikes.
 Where are you?
 
 With no other choice, you begin searching the surroundings…""")
+    print("=" *133)
+    
     
     while True:
-        print("\n")
-        print("I can")
-        print("-" *31)
-        print("1. Go to the old shed")
-        print("2. GO to the grave")
-        print("3. Check the old mail")
-        print("4. Try the code on the padlock")
-        print("-" *31)
+        print("1. the old shed")
+        print("2. the grave")
+        print("3. the old mail")
+        print("4. the padlock on the door")
         
         try:
-            vraag = int(input("choose to inpsect:"))
+            vraag = int(input("check:"))
             print("\n")
                 
         except ValueError:
+            print("\n")
             print("X" *30)
             print("WRONG CHOICE")
             print("X" *30)
             continue
         
         if vraag == 1:
-            print("""You cautiously approach the old shed, every step crunching on dead leaves. Your hand shakes as you reach for the door—and, surprisingly, it swings open easily.
+            print("=" *133,"""\nYou cautiously approach the old shed, every step crunching on dead leaves. Your hand shakes as you reach for the door—and,
+surprisingly, it swings open easily.
 
 Inside, shards of broken glass litter the floor, catching the lantern’s weak glow. The room is empty… except for the wall ahead.
 
@@ -138,58 +145,74 @@ Next to it, a note flutters slightly as if moved by a ghostly breath. You pick i
 Confusion knots your stomach. What could it mean?
 
 Shoving the cryptic note into your pocket, you turn back toward the abandoned cabin, heart hammering with more questions than answers.""")
+            print("=" *133)
             
         
         elif vraag == 2:
-            print("""As you approach the grave, something catches your eye—a shovel, carelessly laid across the mound. A sticky note clings to its handle, scrawled in hurried letters:
+            print("=" *133,"""\nAs you approach the grave, something catches your eye—a shovel, carelessly laid across the mound.
+A sticky note clings to its handle, scrawled in hurried letters:
 
 DIG ME UP
 
-Your hands tremble as you lift the shovel. Each strike into the earth feels heavier than the last, and what seems like hours pass in a blur of dirt and sweat. Finally, the edge of wood breaks through the soil.
+Your hands tremble as you lift the shovel. Each strike into the earth feels heavier than the last,
+and what seems like hours pass in a blur of dirt and sweat. Finally, the edge of wood breaks through the soil.
 
-An old coffin. Its lid splinters under your blows. The moment it cracks open, a putrid stench hits you, so foul it makes your stomach churn. You shine your lantern inside.
+An old coffin. Its lid splinters under your blows. The moment it cracks open, a putrid stench hits you,
+so foul it makes your stomach churn. You shine your lantern inside.
 
-A corpse lies within, twisted and decayed beyond recognition. You can’t tell if it was a boy or a girl. You fight the urge to gag.
+A corpse lies within, twisted and decayed beyond recognition. You can’t tell if it was a boy or a girl.
+You fight the urge to gag.
 
-Something catches your eye—a small yellow paper wedged between the corpse’s teeth. With shaking hands, you pry its mouth open. The brittle sound of cracking bones echoes in the silent night.
+Something catches your eye—a small yellow paper wedged between the corpse’s teeth. With shaking hands, you pry its mouth open.
+The brittle sound of cracking bones echoes in the silent night.
 
 The note reads: 66. Around the edges of the paper, written in jagged letters: REDRUM.
 
 Your chest tightens. The forest seems darker now. The cold wind brushes past you, whispering something you can’t quite hear.
 
-Shoving the horrifying discovery into your mind, you turn back toward the abandoned cabin, the lantern flickering like a fragile heartbeat.""")
+Shoving the horrifying discovery into your mind, you turn back toward the abandoned cabin,
+the lantern flickering like a fragile heartbeat.""")
+            print("=" *133)
             
         elif vraag == 3:
-            print("""You crouch down and begin rifling through the old mail scattered across the floor—bills yellowed with age, letters with curled edges. Some are somber, beginning with “In loving memory…”; others are harsh, warning of overdue payments and last notices.
+            print("=" *133,"""\nYou crouch down and begin rifling through the old mail scattered across the floor—bills yellowed with age,
+letters with curled edges. Some are somber, beginning with “In loving memory…”; others are harsh,
+warning of overdue payments and last notices.
 
-Amid the piles, a torn piece of newspaper catches your eye. Half-burned, its edges blackened, it tells of a murder—but the names, dates, and details are obscured, lost to time and fire.
+Amid the piles, a torn piece of newspaper catches your eye. Half-burned, its edges blackened,
+it tells of a murder—but the names, dates, and details are obscured, lost to time and fire.
 
 Pinned beneath the newspaper is a number, written hastily: 66. Under it, a single word: LIES.
 
 A chill runs down your spine. You straighten up, heart pounding, the cabin feeling colder, darker, heavier than before.""")
+            print("=" *133)
+            
                 
         
         elif vraag == 4:
-            if padlock():
+            if padlock(name, level):
                 break
             
         else:
+            print("\n")
             print("X" *30)
             print("WRONG CHOICE")
             print("X" *30)
         
 #----------------------------------------Padlock       
         
-def padlock():
+def padlock(name, level):
     while True:
+        print("∞" *30)
         print("You look at the padlock")
-        print("-" *30)
+        print("∞" *30)
         print("1. Enter the code")
         print("2. Back")
-        print("-" *30)
+        print("∞" *30)
         
         
         keuze = input("Choose:")
+        print("\n")
             
 
             
@@ -199,38 +222,184 @@ def padlock():
             
                     
             if not code_input.isdigit():
+                print("\n")
                 print("X" *30)
                 print("ITS A NUMERIC CODE")
                 print("X" *30)
-                print("\n")
                 continue
                     
             if code_input == "456666":
-                inside()
-                return True
+                    print("\n")
+                    print("ꗃ" *10)
+                    print("ꗃ UNLOCKED ꗃ")
+                    print("ꗃ" *10)
+                    print("\n")
+                    print("=" *133,"""\nYou walk inside and catch a strange smell,
+but you ignore it and keep moving. The place feels old, partly burned and forgotten.
+You take a moment to look around.""")
+                    print("=" *133)
+                    inside(name, level)
+                    return True
                     
             else:
+                print("\n")
                 print("X" *30)
                 print("wrong combination")
                 print("X" *30)
-                print("\n")
                         
                     
         elif keuze == "2":
-            print("You step back from the padlock.")
+            print("\n")
+            print("⬅" *15)
+            print("⬅You step back from the padlock⬅")
+            print("⬅" *15)
             return False
         
         else:
+            print("\n")
             print("X" *30)
             print("WRONG CHOICE")
             print("X" *30)
-            print("\n")
 
                                 
 #------------------------------------------------------------------PART 2: INSIDE
 
-def inside():
-    print("Next part coming soon")
+def inside(name, level):
+    while True:
+        try:
+            print("1. the bathroom")
+            print("2. the Living room")
+            print("3. the toilet")
+            print("4. the Kitchen")
+            print("5. the basement")
+            
+            vraag = int(input("Enter:"))
+            print("\n")
+            
+        except ValueError:
+            print("\n")
+            print("X" *30)
+            print("WRONG CHOICE")
+            print("X" *30)
+            continue
+            
+        if vraag == 1:
+            print("=" *133, """\nAs you step into the bathroom, the stench intensifies—thick, sour, suffocating.
+Your eyes drift to the bathtub. A rotting corpse lies slumped inside.
+
+A shiver races down your spine.
+Its fingers are nearly gone, decayed to gnawed stubs. A dark hole gapes in its skull,
+the unmistakable mark of a bullet tearing straight through.
+
+You stumble back, unable to look any longer, and hurry out of the bathroom, your heart pounding in your throat.""")
+            print("=" *133)
+            
+        
+        elif vraag == 2:
+            print("=" *133, """\nThe living room—if it can even be called that anymore—looks like it might once have been warm and cozy.
+Now it’s nothing but a broken shell. Furniture collapsed in on itself, curtains moth-eaten, and old bloodstains dried into the wood like bruises on the house itself.
+
+Your eyes drift to a faded calendar hanging crooked on the wall.
+25 September 2009.
+The date where time… simply stopped.
+
+But why?
+
+A cold unease creeps up your neck.
+You decide it’s best to leave and head back.""")
+            print("=" *133)
+            
+        elif vraag == 3:
+            print("=" *133,"""\nYou open the toilet door and stop—candlelight flickers everywhere.
+Photos cover the walls, most with their faces violently scratched out.
+
+Then you spot one that isn’t.
+A photo of you.
+
+Your stomach drops.
+“What… how is this here?”
+
+You turn it over.
+On the back, a name is written""")
+            print("=" *133)
+            print(f"""
+|----------------------|
+|                      |
+| {name}                |
+|                      |
+|                      |
+|                      |
+|    BETRAYAL          |
+|                      |
+|----------------------|
+
+""")
+            print("=" *133, """\nMy stomach plummets. It knows my name.
+It has my picture. I have to get out—now.""")
+            print("=" *133)
+            
+        
+        
+        elif vraag == 4:
+            print("=" *133, """\nAs you move to step into the kitchen, you feel resistance—the door won’t budge.
+You shove it, and a cascade of charred wood crashes to the floor.
+Wow. That nearly took my head off. And beyond it… nothing remains.
+Burned out. Caved in.
+Everything is gone.....""")
+            print("=" *133)
+            
+        
+        elif vraag == 5:
+           print("=" * 133, """\nYou move down the stairs, every creak threatening to collapse under your feet.
+The air grows dense, almost suffocating. You open the basement door into absolute darkness. A table. A chair. A TV waiting in the corner.
+You barely sit down before the TV suddenly flicks on by itself.""")
+           print("""
+               o
+          o    |
+           \   |
+            \  |
+             \.|-.
+             (\|  )
+    .==================.
+    | .--------------. |
+    | |--.__.--.__.--| |
+    | |--.__.--.__.--| |
+    | |--.👁_.--👁.--| |
+    | |--.__.--.__.--| |
+    | |--.__.--.__.--| |
+    | '--------------'o|
+    | LI LI """""""   o|
+    '=================='
+
+""")
+           print("=" *133)
+           print(f""" Hello {name} i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
+You left innocent people—my wife—behind. She was only 45."  A light snaps on across the room. Your best friend is there, someone standing behind him.
+
+“I’m giving you a second chance. This time you don’t get to run. Put your hands in the iron lock.”
+
+Panic surges through you. You obey.
+
+“Good. Now we begin. Each question you get wrong costs you a finger. {level} Lives were lost that day—that’s how many chances you get.”
+
+“Let the game begin.""")
+           print("=" *133)
+           the_game(name, level)
+           break
+            
+            
+        else:
+            print("\n")
+            print("X" *30)
+            print("WRONG CHOICE")
+            print("X" *30)
+            continue
+            
+    
+#------------------------------------------------------------------PART 3: THE GAME
+def the_game(name, level):
+    print("SOOOOOONNNNN")
+    
     
 #------------------------------------------------------------------Opstart
 
