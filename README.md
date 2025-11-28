@@ -64,15 +64,19 @@ None yet — coming soon!
 
 **-------------------------------------------------------------------------------------------------------------**
 
-
-
-\## **Updates**
+\## **UPDATES**
 
 
 
-Work in progress — new content and improvements will be added soon.
+**New**
+- Added a new playable level.
+
+**Fixes**
+- Resolved several bugs in the previous version.
+
 
 
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
