@@ -56,9 +56,8 @@ Solve puzzles, uncover secrets, and try to escape the eerie environment.
 
 \## **SCREENSHOTS**
 
+<img width="321" height="240" alt="Screenshot 2025-12-02 221133" src="https://github.com/user-attachments/assets/ccf62a39-54c8-4de0-b18e-f2feea361633" />
 
-
-None yet — coming soon!
 
 
 
@@ -67,16 +66,21 @@ None yet — coming soon!
 \## **UPDATES**
 
 
-
+Update 27/11/25
 **New**
 - Added a new playable level.
-
 **Fixes**
 - Resolved several bugs in the previous version.
+
+Update 02/12/25
+feat: add new game features
+fix: correct spelling errors
+chore: update minor game logic
 
 
 
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
