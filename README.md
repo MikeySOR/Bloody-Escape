@@ -67,23 +67,19 @@ Solve puzzles, uncover secrets, and try to escape the eerie environment.
 
 
 Update 27/11/25
-**New**
 - Added a new playable level.
-**Fixes**
 - Resolved several bugs in the previous version.
 
 Update 02/12/25
-**feat** 
 - add new game features
-**fix** 
-- correct spelling errors
-**chore** 
+- correct spelling errors 
 - update minor game logic
 
 
 
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
 
