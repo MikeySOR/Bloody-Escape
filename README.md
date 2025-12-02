@@ -73,14 +73,15 @@ Update 27/11/25
 - Resolved several bugs in the previous version.
 
 Update 02/12/25
-feat: add new game features
-fix: correct spelling errors
-chore: update minor game logic
+-feat: add new game features
+-fix: correct spelling errors
+-chore: update minor game logic
 
 
 
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
 
