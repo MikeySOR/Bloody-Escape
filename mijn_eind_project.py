@@ -21,7 +21,7 @@ def menu():
         print("4. Quit\n")
         
         try:
-            vraag = int(input("Make your choise:"))
+            vraag = int(input("Make your choice:"))
         except ValueError:
             print("X" *30)
             print("WRONG CHOICE!")
@@ -88,6 +88,7 @@ def menu():
 #------------------------------------------------------------------PART 1: OUTSIDE
             
 def play(name, level):
+    print("-BEGIN LINE-")
     print("=" *133,"""\nHelp…
 Help… HEEEELP AAAAUWHHWHHHHEEEERRRRRGGGG!
 
@@ -140,6 +141,7 @@ With no other choice, you begin searching the surroundings…""")
             continue
         
         if vraag == 1:
+            print("-BEGIN LINE-")
             print("=" *133,"""\nYou cautiously approach the old shed, every step crunching on dead leaves. Your hand shakes as you reach for the door—and,
 surprisingly, it swings open easily.
 
@@ -156,6 +158,7 @@ Shoving the cryptic note into your pocket, you turn back toward the abandoned ca
             
         
         elif vraag == 2:
+            print("-BEGIN LINE-")
             print("=" *133,"""\nAs you approach the grave, something catches your eye—a shovel, carelessly laid across the mound.
 A sticky note clings to its handle, scrawled in hurried letters:
 
@@ -182,6 +185,7 @@ the lantern flickering like a fragile heartbeat.""")
             print("=" *133)
             
         elif vraag == 3:
+            print("-BEGIN LINE-")
             print("=" *133,"""\nYou crouch down and begin rifling through the old mail scattered across the floor—bills yellowed with age,
 letters with curled edges. Some are somber, beginning with “In loving memory…”; others are harsh,
 warning of overdue payments and last notices.
@@ -291,6 +295,7 @@ def inside(name, level):
             continue
             
         if vraag == 1:
+            print("-BEGIN LINE-")
             print("=" *133, """\nAs you step into the bathroom, the stench intensifies—thick, sour, suffocating.
 Your eyes drift to the bathtub. A rotting corpse lies slumped inside.
 
@@ -303,6 +308,7 @@ You stumble back, unable to look any longer, and hurry out of the bathroom, your
             
         
         elif vraag == 2:
+            print("-BEGIN LINE-")
             print("=" *133, """\nThe living room—if it can even be called that anymore—looks like it might once have been warm and cozy.
 Now it’s nothing but a broken shell. Furniture collapsed in on itself, curtains moth-eaten, and old bloodstains dried into the wood like bruises on the house itself.
 
@@ -317,6 +323,7 @@ You decide it’s best to leave and head back.""")
             print("=" *133)
             
         elif vraag == 3:
+            print("-BEGIN LINE-")
             print("=" *133,"""\nYou open the toilet door and stop—candlelight flickers everywhere.
 Photos cover the walls, most with their faces violently scratched out.
 
@@ -348,6 +355,7 @@ It has my picture. I have to get out—now.""")
         
         
         elif vraag == 4:
+            print("-BEGIN LINE-")
             print("=" *133, """\nAs you move to step into the kitchen, you feel resistance—the door won’t budge.
 You shove it, and a cascade of charred wood crashes to the floor.
 Wow. That nearly took my head off. And beyond it… nothing remains.
@@ -357,6 +365,7 @@ Everything is gone.....""")
             
         
         elif vraag == 5:
+           print("-BEGIN LINE-") 
            print("=" * 133, """\nYou move down the stairs, every creak threatening to collapse under your feet.
 The air grows dense, almost suffocating. You open the basement door into absolute darkness. A table. A chair. A TV waiting in the corner.
 You barely sit down before the TV suddenly flicks on by itself.""")
@@ -380,6 +389,7 @@ You barely sit down before the TV suddenly flicks on by itself.""")
 
 """)
            print("=" *133)
+           print("-BEGIN LINE-")
            print(f"""Hello {name} i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
 You left innocent people—my wife—behind. She was only 45."
 
@@ -415,12 +425,18 @@ def the_game(name, level):
         ("What was written on the back of the picture and no not your name something else?", "betrayal"),
         ("I am strong enough to smash ships, but I fear the Sun. What am I?", "ice"),
         ("I watch you sleep, I haunt you by day. You stare at me and saw nothing, but darkness. What am I?", "fear"),
-        ("What is a cereal's worst fear?", "a cereal killer"),
+        ("What is a cereal's worst fear?", "cereal killer"),
         ("What do you call a person who is afraid of Santa Claus?", "claustrophobic"),
-        ("What does man love more than life, fear more than death or mortal strife, What the poor have, the rich require, and what contented men desire, What the miser spends and the spendthrift saves And all men carry to their graves?", "nothing"),
-        ("It can't be seen, can't be felt, can't be heard, and can't be smelt. It lies behind stars and under hills, And empty holes it fills. It comes first and follows after, Ends life, and kills laughter. What is it?", "the dark"),
-        ("There is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. He has a wife and 2 kids. What does he weigh?", "meat"),
-        ("Something that requires our mental skill to decode it, our imagination to understand it, our knowledge is tested to its max, it confuses us at every stage, it seems easy yet difficult, only those who are used to, will get through. What is it?", "a riddle"),
+        ("""What does man love more than life, fear more than death or mortal strife, What the poor have,
+    the rich require, and what contented men desire, What the miser spends and the spendthrift saves
+    And all men carry to their graves?""", "nothing"),
+        ("""It can't be seen, can't be felt, can't be heard, and can't be smelt. It lies behind stars and under hills,
+        And empty holes it fills. It comes first and follows after, Ends life, and kills laughter. What is it?""", "the dark"),
+        ("""There is a clerk at the butcher shop, he is five feet ten inches tall,
+    and he wears size 13 sneakers. He has a wife and 2 kids. What does he weigh?""", "meat"),
+        ("""Something that requires our mental skill to decode it, our imagination to understand it,
+    our knowledge is tested to its max, it confuses us at every stage, it seems easy yet difficult,
+    only those who are used to, will get through. What is it?""", "a riddle"),
         ("What kills you inside the more you keep it and sets you free the moment you release it?", "guilt"),
         ("Why did the man shoot the clock?", "killing time"),
         ("Why was the clock arrested?", "killing time"),
@@ -436,7 +452,8 @@ def the_game(name, level):
     vragenlijst = random.sample(riddles, level)
     
     for i, (riddle, answer) in enumerate(vragenlijst, start=1):
-        print("☠" * 9)
+        print("\n")
+        print("-" * 13)
         print(f"Riddle {i} / {level}")
         print("☠" * 73)
         print("\n")
@@ -445,8 +462,8 @@ def the_game(name, level):
         print("☠" * 73)
                 
         user_answer = input("Give answer:").strip().lower()
-        correct = answer.lower()
-        if user_answer == correct:
+        
+        if user_answer == answer.lower():
             print("Correct.\n")
             score += 1
             
@@ -459,21 +476,37 @@ def the_game(name, level):
                 print("=" *103)
                 print("NOT EVEN ONE, WHAT A SHAME")
                 print("you will have to live with the consequences")
-                print("Enter the next room. And be smart about it. Your friend’s life hangs on how you choose your next steps")
-                print("=" *103)
                 ending(name, level, score)
                 return
             
     
-    print("\n" + "=" * 103)
-    print("You may have gotten lucky this time, but this isn’t the end.")
-    print("Enter the next room. And be smart about it. Your friend’s life hangs on how you choose your next steps")
-    print("=" *103)
+    print("\n")
     ending(name, level, score)
                 
                 
 #------------------------------------------------------------------Einding
 def ending(name, level, score):
+    minimum_required = level // 2
+    
+    if score >= minimum_required:
+        result = """You passed. You managed to save your friend—but this isn’t over.
+There are others being held captive here.
+And they’re waiting for you.
+Enter the next room. And be smart about it. think about the others before you do anything stupid."""
+        
+        
+    else:
+        result = """You did not pass the challenge. what a shame...... Time seems to crawl, every second stretching thin.
+Before you can speak, a deafening bang echoes through the house.
+
+A voice roars from the darkness:
+“I’m sorry about your friend… but he isn’t the only one here.
+
+Enter the next room. And be smart about it. think about the others before you do anything stupid."""
+    print("=" *103)
+    print(result)
+    print("=" *103)
+    
     while True:
         print("1. Try to run")
         print("2. Enter the next room")
@@ -489,6 +522,7 @@ def ending(name, level, score):
             
         if vraag == 1:
             print("\n")
+            print("-BEGIN LINE-")
             print("=" * 133, """\nYou hold your breath, waiting for the right moment. The room is tight with tension.
 You spin toward the door, reaching for the handle—
 
@@ -498,11 +532,36 @@ A sudden crack explodes through the air. Glass rains down around you. A sharp im
 
 Another echoing shot splits the silence.
 
-“I expected more from you.”""")
+“I expected more from you.\n”""")
+            print("\n2 Weeks later......\n")
+            print("""
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣶⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣶⠿⣿⡇⠀⠀
+⠀⠀⢸⣿⣈⣉⠙⠛⠻⠿⣿⣶⣤⡀⠀⠀⢀⣤⣶⠿⠛⠋⠉⠀⠀⠀⢸⡇⠀⠀
+⠀⠀⢸⣿⠛⠻⣿⢷⣶⣦⣤⣈⡉⣿⡇⢸⡟⠉⠀⠀⠀⠀⠀⠀⠀⢀⣼⡇⠀⠀
+⠀⠀⢸⣿⠿⠶⣿⣤⣴⣿⣏⣉⣙⣿⡇⢸⡇⠀⠀⣀⣀⣤⣴⣶⠿⠿⣿⡇⠀⠀
+⠀⠀⢸⣷⣶⣤⣤⣤⣄⣈⣉⠙⠛⣿⡇⢸⣷⠾⠟⠛⢉⣿⣧⣤⣴⣶⣿⡇⠀⠀
+⠀⠀⢸⣯⣤⣄⣸⣿⣏⠙⠛⠛⠛⣿⡇⢸⣿⣴⣶⡿⠿⠛⠛⣿⣇⣤⣽⡇⠀⠀
+⠀⠀⢸⡏⠉⠛⠛⠛⢿⡿⠿⢿⣶⣿⡇⢸⣿⣉⣤⣤⡶⠾⠛⠛⢉⣉⣽⡇⠀⠀
+⠀⠀⢸⡇⠀⠀⠀⠀⢸⡷⠶⢤⣤⣿⡇⢸⣿⣉⣥⣿⣶⣶⠞⠛⠋⠉⢹⡇⠀⠀
+⠀⠀⢸⡇⠀⠀⠀⠀⢸⣷⣦⣤⣤⣿⡇⢸⣿⠋⣉⣉⣨⣿⠀⣿⣿⡇⢸⡇⠀⠀
+⠀⠀⢸⣇⣀⣀⣀⡀⢸⣧⣄⣉⣉⣿⡇⢸⣿⠛⠋⣉⣹⣿⣀⣉⣉⣠⣼⡇⠀⠀
+⠀⠀⠈⠉⠉⠉⠉⠛⠛⠛⠿⠿⢿⣿⡇⢸⣿⡿⠿⠿⠛⠛⠛⠉⠉⠉⠉⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+BODY FOUND IN ADVANCED DECOMPOSITION
+Authorities report that the victim has not yet been identified due to the severe level of decomposition.
+Investigators confirmed that the teeth and fingernails had been deliberately removed.
+
+Officials are now questioning whether this is the killer’s first victim—or one of many.
+Police warn the public that a potential serial offender may be involved.
+
+Anyone with information is urged to contact authorities as they work to uncover the identity of the Jane Doe.""")
             print("=" * 133)
             print(f"{name}.")
-            print(f"You solved {score}/{level} riddles.")
-            print("=" * 30)
+            print(f"Your score: {score}/{level}")
+            print(f"Required to pass: {minimum_required} ({level//2}+ correct answers)")
+            print("=" * 40)
             print("1. Back to menu")
             
             press = int(input("Press the number:"))
@@ -517,9 +576,18 @@ Another echoing shot splits the silence.
         
         elif vraag == 2:
             print("\n")
-            print("=" * 68)
+            print("-BEGIN LINE-")
+            print("=" * 80, """
+ _____       _                            _   _                      _       
+|_   _|__   | |__   ___    ___ ___  _ __ | |_(_)_ __  _   _  ___  __| |      
+  | |/ _ \  | '_ \ / _ \  / __/ _ \| '_ \| __| | '_ \| | | |/ _ \/ _` |      
+  | | (_) | | |_) |  __/ | (_| (_) | | | | |_| | | | | |_| |  __/ (_| |_ _ _ 
+  |_|\___/  |_.__/ \___|  \___\___/|_| |_|\__|_|_| |_|\__,_|\___|\__,_(_|_|_)""")
+            print("\n")
+            print("=" * 80)
             print(f"Congratulations {name} you’ve completed the first part of the game!")
-            print(f"You solved {score}/{level} riddles.")
+            print(f"Your score: {score}/{level}")
+            print(f"Required to pass: {minimum_required} ({level//2}+ correct answers)")
             print("=" * 68)
             print("1. Back to menu")
             
@@ -539,5 +607,5 @@ Another echoing shot splits the silence.
     
     
 #------------------------------------------------------------------Opstart
-
-menu()
+if __name__ == "__main__":
+    menu()
