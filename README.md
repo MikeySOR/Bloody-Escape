@@ -75,10 +75,15 @@ Update 02/12/25
 - correct spelling errors 
 - update minor game logic
 
-
+Update 03/12/25
+- add new game features
+- correct spelling errors
+- update minor game logic
+- Resolved several bugs in the previous version.
 
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
 
