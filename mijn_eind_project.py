@@ -1,15 +1,60 @@
-#------------------------------------------------------------------Intro
+#------------------------------------------------------------------INFO
 
-
-
+#Welcome to Bloody Escape! I had a lot of fun creating this game—there was plenty
+#of sweating and bug-hunting along the way, but it’s finally finished. I hope you enjoy it. Have fun!
 
 #------------------------------------------------------------------Imports
 
 import random
+import os
+from datetime import datetime
+
+#------------------------------------------------------------------Document
+# Make sure the save file is created in the SAME folder as the program
+SAVE_FILE = os.path.join(os.path.dirname(__file__), "Bloody_results.txt")
+
+
+def document(name, score, level, user_answers_list, correct_answers_list, riddles_list):
+    wrong = level - score
+    
+    if level <= 0:
+        level = len(riddles_list)
+
+    wrong = level - score
+    percentage = round((score / level) * 100, 2) if level > 0 else 0.0
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    header = f"===== BLOODY ESCAPE RESULT - {timestamp} =====\n"
+
+    with open(SAVE_FILE, "a", encoding="utf-8") as file:
+        file.write(header)
+        file.write(f"Speler: {name}\n")
+        file.write(f"Totaal aantal raadsels (gevraagd): {level}\n")
+        file.write(f"Goed opgelost: {score}\n")
+        file.write(f"Fout opgelost: {wrong}\n")
+        file.write(f"Score percentage: {percentage}%\n\n")
+        file.write("------------ DETAILS PER RAADSEL ------------\n")
+
+        
+        total = min(level, len(riddles_list))
+        
+        for i in range(total):
+            r = riddles_list[i]
+            ua = user_answers_list[i] if i < len(user_answers_list) else "<geen antwoord>"
+            ca = correct_answers_list[i] if i < len(correct_answers_list) else "<geen correct antwoord>"
+            file.write(f"Riddle {i+1}: {r}\n")
+            file.write(f"  Jouw antwoord: {ua}\n")
+            file.write(f"  Correct antwoord: {ca}\n")
+            file.write("  Resultaat: " + ("Correct\n\n" if ua.lower() == ca.lower() else "Fout\n\n"))
+
+        file.write("\n\n")
+
 
 #------------------------------------------------------------------Menu
 
+
 def menu():
+    open(SAVE_FILE, "a").close()
     while True:
         print("=" *30)
         print("|| Welcome to""\033[91m Bloody Escape \033[0m" "||")
@@ -29,18 +74,18 @@ def menu():
             continue
             
         if vraag == 1:
-            name = input("What is your name?:")
-            
-            try:
-                level = int(input("How many riddles from 0 to 10?:"))
-                print("\n")
-            
-            except ValueError:
-                print("\n")
-                print("X" *30)
-                print("ENTER A NUMBER")
-                print("X" *30)
-                continue
+            name = input("What is your name?:").strip() or "Speler"
+            while True:
+                try:
+                    level = int(input("How many riddles from 0 to 10?:"))
+                    print("\n")
+                    break
+                    
+                except ValueError:
+                    print("\n")
+                    print("X" *30)
+                    print("ENTER A NUMBER")
+                    print("X" *30)
             
             if level == 0:
                 print("\n")
@@ -50,9 +95,8 @@ def menu():
                 print("☮" *20)
                 break
             
-            else:
-                play(name, level)
-                break
+            play(name, level)
+                
                     
                     
         elif vraag == 2:
@@ -201,8 +245,9 @@ A chill runs down your spine. You straighten up, heart pounding, the cabin feeli
                 
         
         elif vraag == 4:
-            if padlock(name, level):
-                break
+                unlocked = padlock(name, level)
+                if unlocked:
+                    return
             
         else:
             print("\n")
@@ -222,16 +267,13 @@ def padlock(name, level):
         print("∞" *30)
         
         
-        keuze = input("Choose:")
+        keuze = input("Choose:").strip()
         print("\n")
             
 
             
         if keuze == "1":
-            code_input = input("Enter code:")
-            
-            
-                    
+            code_input = input("Enter code:").strip()       
             if not code_input.isdigit():
                 print("\n")
                 print("X" *30)
@@ -405,7 +447,7 @@ Panic surges through you. You obey.
 “Let the game begin.""")
            print("=" *133)
            the_game(name, level)
-           break
+           return
             
             
         else:
@@ -421,7 +463,7 @@ def the_game(name, level):
     riddles = [
         ("What gets smaller every time it takes a bath?", "soap"),
         ("What is more useful when it is broken?", "egg"),
-        ("What date could be seen on the calender?", "25 September 2009"),
+        ("What date could be seen on the calender?", "25 september 2009"),
         ("What was written on the back of the picture and no not your name something else?", "betrayal"),
         ("I am strong enough to smash ships, but I fear the Sun. What am I?", "ice"),
         ("I watch you sleep, I haunt you by day. You stare at me and saw nothing, but darkness. What am I?", "fear"),
@@ -449,6 +491,11 @@ def the_game(name, level):
     lives = level
     score = 0
     
+    #voor later in bestand te schrijve 
+    user_answers_list = []
+    correct_answers_list = []
+    riddles_list = []
+    
     vragenlijst = random.sample(riddles, level)
     
     for i, (riddle, answer) in enumerate(vragenlijst, start=1):
@@ -461,9 +508,14 @@ def the_game(name, level):
         print("\n")
         print("☠" * 73)
                 
-        user_answer = input("Give answer:").strip().lower()
+        user_answer = input("Give answer:").strip()
         
-        if user_answer == answer.lower():
+        # opslaan
+        user_answers_list.append(user_answer)
+        correct_answers_list.append(answer)
+        riddles_list.append(riddle)
+        
+        if user_answer.lower() == answer.lower():
             print("Correct.\n")
             score += 1
             
@@ -475,38 +527,53 @@ def the_game(name, level):
             if lives <= 0:
                 print("=" *103)
                 print("NOT EVEN ONE, WHAT A SHAME")
-                print("you will have to live with the consequences")
+                print("""you will have to live with the consequences
+You did not pass the challenge. what a shame......
+
+Time seems to crawl, every second stretching thin. Before you can speak,
+a deafening bang echoes through the house.
+
+A voice roars from the darkness:
+I’m sorry about your friend… but he isn’t the only one here.
+
+Enter the next room. And be smart about it. think about the others before you do anything stupid.""")
+                print("=" *103)
+                document(name, score, level, user_answers_list, correct_answers_list, riddles_list)
                 ending(name, level, score)
                 return
             
     
     print("\n")
     ending(name, level, score)
+    document(name, score, level, user_answers_list, correct_answers_list, riddles_list)
+    return
+    
                 
                 
 #------------------------------------------------------------------Einding
 def ending(name, level, score):
+    if level <= 0:
+        level = 1
     minimum_required = level // 2
+    passed = score >= minimum_required
+
     
-    if score >= minimum_required:
-        result = """You passed. You managed to save your friend—but this isn’t over.
+    if passed:
+        result = ("""You passed. You managed to save your friend—but this isn’t over.
 There are others being held captive here.
 And they’re waiting for you.
-Enter the next room. And be smart about it. think about the others before you do anything stupid."""
+Enter the next room. And be smart about it. think about the others before you do anything stupid.""")
         
         
     else:
-        result = """You did not pass the challenge. what a shame...... Time seems to crawl, every second stretching thin.
+        result = ("""You did not pass the challenge. what a shame...... Time seems to crawl, every second stretching thin.
 Before you can speak, a deafening bang echoes through the house.
 
 A voice roars from the darkness:
-“I’m sorry about your friend… but he isn’t the only one here.
+I’m sorry about your friend… but he isn’t the only one here.
 
-Enter the next room. And be smart about it. think about the others before you do anything stupid."""
-    print("=" *103)
-    print(result)
-    print("=" *103)
-    
+Enter the next room. And be smart about it. think about the others before you do anything stupid.""")
+
     while True:
         print("1. Try to run")
         print("2. Enter the next room")
@@ -570,7 +637,6 @@ Anyone with information is urged to contact authorities as they work to uncover 
             if press == 1:
                 menu()
                 return
-            
             
         
         
