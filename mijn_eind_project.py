@@ -655,7 +655,6 @@ Anyone with information is urged to contact authorities as they work to uncover 
                     continue
 
                 if press == 1:
-                    menu()
                     return
                 
                 else:
@@ -689,7 +688,6 @@ Anyone with information is urged to contact authorities as they work to uncover 
                     continue
 
                 if press == 1:
-                    menu()
                     return
                 else:
                     print("X" * 31)
