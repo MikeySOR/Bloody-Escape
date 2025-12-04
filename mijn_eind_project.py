@@ -42,17 +42,16 @@ def document(name, score, level, user_answers_list, correct_answers_list, riddle
             r = riddles_list[i]
             ua = user_answers_list[i] if i < len(user_answers_list) else "<geen antwoord>"
             ca = correct_answers_list[i] if i < len(correct_answers_list) else "<geen correct antwoord>"
-            file.write(f"Riddle {i+1}: {r}\n")
-            file.write(f"  Jouw antwoord: {ua}\n")
-            file.write(f"  Correct antwoord: {ca}\n")
-            file.write("  Resultaat: " + ("Correct\n\n" if ua.lower() == ca.lower() else "Fout\n\n"))
+            file.write(f"\nRiddle {i+1}: {r}\n")
+            file.write(f"-Jouw antwoord: {ua}\n")
+            file.write(f"-Correct antwoord: {ca}\n")
+            file.write("-Resultaat: " + ("Correct\n\n" if ua.lower() == ca.lower() else "Fout\n\n"))
+            file.write("-" * 80)
 
         file.write("\n\n")
 
 
 #------------------------------------------------------------------Menu
-
-
 def menu():
     open(SAVE_FILE, "a").close()
     while True:
@@ -68,9 +67,10 @@ def menu():
         try:
             vraag = int(input("Make your choice:"))
         except ValueError:
-            print("X" *30)
-            print("WRONG CHOICE!")
-            print("X" *30)
+            print("\n")
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-4 X")
+            print("X" *34)
             continue
             
         if vraag == 1:
@@ -83,12 +83,26 @@ def menu():
                     
                 except ValueError:
                     print("\n")
-                    print("X" *30)
-                    print("ENTER A NUMBER")
-                    print("X" *30)
+                    print("X" *35)
+                    print("X WRONG CHOICE: Only numbers 1-10 X")
+                    print("X" *35)
+                    
+            if level > 10:
+                print("X" *68)
+                print("X You cannot choose more than 10 riddles. Level has been set to 10 X")
+                print("X" *68)
+                level = 10
+                continue
+                    
+            if level <= -1:
+                print("X" *47)
+                print("X Minimum level is 1. Level has been set to 1 X")
+                print("X" *47)
+                level = 1
+                continue
+                
             
             if level == 0:
-                print("\n")
                 print("☮" *20)
                 print("\n-The game has ended-")
                 print("You have no sins.\n")
@@ -125,9 +139,9 @@ def menu():
         
         else:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE!")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-4 X")
+            print("X" *34)
         
 #------------------------------------------------------------------PART 1: OUTSIDE
             
@@ -168,10 +182,10 @@ With no other choice, you begin searching the surroundings…""")
     
     
     while True:
-        print("1. the old shed")
-        print("2. the grave")
-        print("3. the old mail")
-        print("4. the padlock on the door")
+        print("1. The old shed")
+        print("2. The grave")
+        print("3. The old mail")
+        print("4. The padlock on the door")
         
         try:
             vraag = int(input("check:"))
@@ -179,9 +193,9 @@ With no other choice, you begin searching the surroundings…""")
                 
         except ValueError:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-4 X")
+            print("X" *34)
             continue
         
         if vraag == 1:
@@ -251,9 +265,9 @@ A chill runs down your spine. You straighten up, heart pounding, the cabin feeli
             
         else:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-4 X")
+            print("X" *34)
         
 #----------------------------------------Padlock       
         
@@ -276,9 +290,9 @@ def padlock(name, level):
             code_input = input("Enter code:").strip()       
             if not code_input.isdigit():
                 print("\n")
-                print("X" *30)
-                print("ITS A NUMERIC CODE")
-                print("X" *30)
+                print("X" *27)
+                print("X WRONG CHOICE: 6 numeric X")
+                print("X" *27)
                 continue
                     
             if code_input == "456666":
@@ -296,9 +310,9 @@ You take a moment to look around.""")
                     
             else:
                 print("\n")
-                print("X" *30)
-                print("wrong combination")
-                print("X" *30)
+                print("X" *21)
+                print("X wrong combination X")
+                print("X" *31)
                         
                     
         elif keuze == "2":
@@ -310,9 +324,9 @@ You take a moment to look around.""")
         
         else:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-2 X")
+            print("X" *34)
 
                                 
 #------------------------------------------------------------------PART 2: INSIDE
@@ -320,20 +334,20 @@ You take a moment to look around.""")
 def inside(name, level):
     while True:
         try:
-            print("1. the bathroom")
-            print("2. the Living room")
-            print("3. the toilet")
-            print("4. the Kitchen")
-            print("5. the basement")
+            print("1. The bathroom")
+            print("2. The Living room")
+            print("3. The toilet")
+            print("4. The Kitchen")
+            print("5. The basement")
             
             vraag = int(input("Enter:"))
             print("\n")
             
         except ValueError:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-5 X")
+            print("X" *34)
             continue
             
         if vraag == 1:
@@ -407,7 +421,7 @@ Everything is gone.....""")
             
         
         elif vraag == 5:
-           print("-BEGIN LINE-") 
+           print("-BEGIN LINE-")
            print("=" * 133, """\nYou move down the stairs, every creak threatening to collapse under your feet.
 The air grows dense, almost suffocating. You open the basement door into absolute darkness. A table. A chair. A TV waiting in the corner.
 You barely sit down before the TV suddenly flicks on by itself.""")
@@ -430,9 +444,9 @@ You barely sit down before the TV suddenly flicks on by itself.""")
     '=================='
 
 """)
+
            print("=" *133)
-           print("-BEGIN LINE-")
-           print(f"""Hello {name} i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
+           print(f"""Hello {name}, i wanna play a game You may not remember me, but I remember you. In 2009, during that robbery, you ran.
 You left innocent people—my wife—behind. She was only 45."
 
 The room floods with light.
@@ -452,9 +466,9 @@ Panic surges through you. You obey.
             
         else:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-5 X")
+            print("X" *34)
             continue
             
     
@@ -470,15 +484,15 @@ def the_game(name, level):
         ("What is a cereal's worst fear?", "cereal killer"),
         ("What do you call a person who is afraid of Santa Claus?", "claustrophobic"),
         ("""What does man love more than life, fear more than death or mortal strife, What the poor have,
-    the rich require, and what contented men desire, What the miser spends and the spendthrift saves
-    And all men carry to their graves?""", "nothing"),
+the rich require, and what contented men desire, What the miser spends and the spendthrift saves
+And all men carry to their graves?""", "nothing"),
         ("""It can't be seen, can't be felt, can't be heard, and can't be smelt. It lies behind stars and under hills,
-        And empty holes it fills. It comes first and follows after, Ends life, and kills laughter. What is it?""", "the dark"),
+And empty holes it fills. It comes first and follows after, Ends life, and kills laughter. What is it?""", "the dark"),
         ("""There is a clerk at the butcher shop, he is five feet ten inches tall,
-    and he wears size 13 sneakers. He has a wife and 2 kids. What does he weigh?""", "meat"),
+and he wears size 13 sneakers. He has a wife and 2 kids. What does he weigh?""", "meat"),
         ("""Something that requires our mental skill to decode it, our imagination to understand it,
-    our knowledge is tested to its max, it confuses us at every stage, it seems easy yet difficult,
-    only those who are used to, will get through. What is it?""", "a riddle"),
+our knowledge is tested to its max, it confuses us at every stage, it seems easy yet difficult,
+only those who are used to, will get through. What is it?""", "a riddle"),
         ("What kills you inside the more you keep it and sets you free the moment you release it?", "guilt"),
         ("Why did the man shoot the clock?", "killing time"),
         ("Why was the clock arrested?", "killing time"),
@@ -491,6 +505,9 @@ def the_game(name, level):
     lives = level
     score = 0
     
+    #Beveiliging niet boven 10
+    level = min(level, len(riddles)) 
+    
     #voor later in bestand te schrijve 
     user_answers_list = []
     correct_answers_list = []
@@ -502,11 +519,11 @@ def the_game(name, level):
         print("\n")
         print("-" * 13)
         print(f"Riddle {i} / {level}")
-        print("☠" * 73)
+        print("☠" * 68)
         print("\n")
         print(riddle)
         print("\n")
-        print("☠" * 73)
+        print("☠" * 68)
                 
         user_answer = input("Give answer:").strip()
         
@@ -517,35 +534,28 @@ def the_game(name, level):
         
         if user_answer.lower() == answer.lower():
             print("Correct.\n")
+            print("^" * 95)
             score += 1
             
         else:
             print(f"WRONG! The answer was: {answer}\n")
-            print("A finger has been cut, a sharp burst of pain tears through you, and you scream, “LET ME OUT!”\n")
+            print("(A finger has been cut, a sharp burst of pain tears through you, and you scream, “LET ME OUT!”)\n")
+            print("^" * 95)
             lives -= 1
             
             if lives <= 0:
+                print("\n")
                 print("=" *103)
                 print("NOT EVEN ONE, WHAT A SHAME")
-                print("""you will have to live with the consequences
-You did not pass the challenge. what a shame......
-
-Time seems to crawl, every second stretching thin. Before you can speak,
-a deafening bang echoes through the house.
-
-A voice roars from the darkness:
-I’m sorry about your friend… but he isn’t the only one here.
-
-Enter the next room. And be smart about it. think about the others before you do anything stupid.""")
-                print("=" *103)
+                print("""you will have to live with the consequences""")
                 document(name, score, level, user_answers_list, correct_answers_list, riddles_list)
                 ending(name, level, score)
                 return
             
     
     print("\n")
-    ending(name, level, score)
     document(name, score, level, user_answers_list, correct_answers_list, riddles_list)
+    ending(name, level, score)
     return
     
                 
@@ -573,6 +583,13 @@ A voice roars from the darkness:
 I’m sorry about your friend… but he isn’t the only one here.
 
 Enter the next room. And be smart about it. think about the others before you do anything stupid.""")
+        
+    print("=" * 103)
+    print(result)
+    print("=" * 103)
+    print(f"Your score: {score}/{level}")
+    print(f"Required to pass: {minimum_required} ({level//2}+ correct answers)")
+    print("=" * 41)
 
     while True:
         print("1. Try to run")
@@ -582,9 +599,9 @@ Enter the next room. And be smart about it. think about the others before you do
         
         except ValueError:
             print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *34)
+            print("X WRONG CHOICE: Only numbers 1-2 X")
+            print("X" *34)
             continue
             
         if vraag == 1:
@@ -625,20 +642,26 @@ Police warn the public that a potential serial offender may be involved.
 
 Anyone with information is urged to contact authorities as they work to uncover the identity of the Jane Doe.""")
             print("=" * 133)
-            print(f"{name}.")
-            print(f"Your score: {score}/{level}")
-            print(f"Required to pass: {minimum_required} ({level//2}+ correct answers)")
-            print("=" * 40)
             print("1. Back to menu")
             
-            press = int(input("Press the number:"))
-            print("\n")
-            
-            if press == 1:
-                menu()
-                return
-            
-        
+            while True:
+                press_input = input("Press the number: ").strip()
+                try:
+                    press = int(press_input)
+                except ValueError:
+                    print("\n" + "X" * 31)
+                    print("X WRONG CHOICE: Only number 1 X")
+                    print("X" * 31)
+                    continue
+
+                if press == 1:
+                    menu()
+                    return
+                
+                else:
+                    print("X" * 31)
+                    print("X WRONG CHOICE: Only number 1 X")
+                    print("X" * 31)
         
         elif vraag == 2:
             print("\n")
@@ -652,23 +675,31 @@ Anyone with information is urged to contact authorities as they work to uncover 
             print("\n")
             print("=" * 80)
             print(f"Congratulations {name} you’ve completed the first part of the game!")
-            print(f"Your score: {score}/{level}")
-            print(f"Required to pass: {minimum_required} ({level//2}+ correct answers)")
-            print("=" * 68)
+            print("=" * 80)
             print("1. Back to menu")
             
-            press = int(input("Press the number:"))
-            print("\n")
-            
-            if press == 1:
-                menu()
-                return
+            while True:
+                press_input = input("Press the number: ").strip()
+                try:
+                    press = int(press_input)
+                except ValueError:
+                    print("\n" + "X" * 31)
+                    print("X WRONG CHOICE: Only number 1 X")
+                    print("X" * 31)
+                    continue
+
+                if press == 1:
+                    menu()
+                    return
+                else:
+                    print("X" * 31)
+                    print("X WRONG CHOICE: Only number 1 X")
+                    print("X" * 31)
         
         else:
-            print("\n")
-            print("X" *30)
-            print("WRONG CHOICE")
-            print("X" *30)
+            print("X" *33)
+            print("X WRONG CHOICE: Only numbers 1-2 X")
+            print("X" *33)
     
     
     
