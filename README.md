@@ -81,8 +81,15 @@ Update 03/12/25
 - update minor game logic
 - Resolved several bugs in the previous version.
 
+Update 04/12/25
+- Moved document() call before return statements
+- Ensured SAVE_FILE always uses script directory
+- Added full data logging for riddles, user answers and correct answers
+- Fixed bug where ending returned too early, skipping document()
+
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
 
