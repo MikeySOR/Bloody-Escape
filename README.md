@@ -87,8 +87,13 @@ Update 04/12/25
 - Added full data logging for riddles, user answers and correct answers
 - Fixed bug where ending returned too early, skipping document()
 
+Update 05/12/25
+- Applied last-minute corrections
+- Cleaned up code and resolved minor issues
+- Prepared for final release
 
 **-------------------------------------------------------------------------------------------------------------**
+
 
 
 
