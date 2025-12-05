@@ -546,7 +546,7 @@ only those who are used to, will get through. What is it?""", "a riddle"),
             if lives <= 0:
                 print("\n")
                 print("=" *103)
-                print("NOT EVEN ONE, WHAT A SHAME")
+                print("NOT EVEN ONE.")
                 print("""you will have to live with the consequences""")
                 document(name, score, level, user_answers_list, correct_answers_list, riddles_list)
                 ending(name, level, score)
@@ -655,6 +655,7 @@ Anyone with information is urged to contact authorities as they work to uncover 
                     continue
 
                 if press == 1:
+                    print("\n")
                     return
                 
                 else:
@@ -688,6 +689,7 @@ Anyone with information is urged to contact authorities as they work to uncover 
                     continue
 
                 if press == 1:
+                    print("\n")
                     return
                 else:
                     print("X" * 31)
